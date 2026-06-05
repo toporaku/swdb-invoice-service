@@ -13,12 +13,21 @@ public class DtoInvoiceList {
 	private Double taxes;
 	
 	private Double total;
+
+	private Double discount;
+
+	private String shipping_address;
+
+	private String payment_method;
+
+	private String coupon_code;
 	
 	public DtoInvoiceList() {
 		
 	}
 
-	public DtoInvoiceList(String id, Integer user_id, String created_at, Double subtotal, Double taxes, Double total) {
+	public DtoInvoiceList(String id, Integer user_id, String created_at, Double subtotal, Double taxes, Double total,
+			Double discount, String shipping_address, String payment_method, String coupon_code) {
 		super();
 		this.id = id;
 		this.user_id = user_id;
@@ -26,6 +35,10 @@ public class DtoInvoiceList {
 		this.subtotal = subtotal;
 		this.taxes = taxes;
 		this.total = total;
+		this.discount = discount;
+		this.shipping_address = shipping_address;
+		this.payment_method = payment_method;
+		this.coupon_code = coupon_code;
 	}
 
 	public String getId() {
@@ -76,5 +89,35 @@ public class DtoInvoiceList {
 		this.total = total;
 	}
 
-	
+	public Double getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(Double discount) {
+		this.discount = discount;
+	}
+
+	public String getShipping_address() {
+		return shipping_address;
+	}
+
+	public void setShipping_address(String shipping_address) {
+		this.shipping_address = shipping_address;
+	}
+
+	public String getPayment_method() {
+		return payment_method;
+	}
+
+	public void setPayment_method(String payment_method) {
+		this.payment_method = payment_method;
+	}
+
+	public String getCoupon_code() {
+		return coupon_code;
+	}
+
+	public void setCoupon_code(String coupon_code) {
+		this.coupon_code = coupon_code;
+	}
 }

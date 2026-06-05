@@ -165,6 +165,7 @@ public class SvcInvoiceImp implements SvcInvoice {
 			invoice.setTotal(totalAmount);
 			invoice.setTaxes(taxesAmount);
 			invoice.setSubtotal(subtotalAmount);
+			invoice.setDiscount(discount);
 			
 			if (checkout != null) {
 				invoice.setShipping_address(checkout.getShippingAddress());

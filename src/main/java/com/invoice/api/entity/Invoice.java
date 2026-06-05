@@ -40,6 +40,8 @@ public class Invoice {
 	@Column(name = "coupon_code")
 	private String couponCode;
 
+	private Double discount;
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "invoice_id", referencedColumnName = "invoice_id")
 	private List<InvoiceItem> items;
@@ -130,6 +132,14 @@ public class Invoice {
 
 	public void setCoupon_code(String couponCode) {
 		this.couponCode = couponCode;
+	}
+
+	public Double getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(Double discount) {
+		this.discount = discount;
 	}
 
 	public List<InvoiceItem> getItems() {
