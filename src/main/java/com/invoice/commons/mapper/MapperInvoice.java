@@ -22,7 +22,11 @@ public class MapperInvoice {
 		            invoice.getCreated_at(),
 		            invoice.getSubtotal(),
 		            invoice.getTaxes(),
-		            invoice.getTotal()
+		            invoice.getTotal(),
+		            invoice.getDiscount(),
+		            invoice.getShipping_address(),
+		            invoice.getPayment_method(),
+		            invoice.getCoupon_code()
 		        );
 			dtoInvoices.add(dtoInvoice);
 		}
