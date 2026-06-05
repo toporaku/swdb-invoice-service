@@ -59,6 +59,9 @@ public class InvoiceServiceIntegrationTests {
     private RepoInvoice repo;
 
     @Autowired
+    private com.invoice.api.repository.RepoCoupon repoCoupon;
+
+    @Autowired
     private ObjectMapper objectMapper;
 
     @MockitoBean
@@ -78,6 +81,8 @@ public class InvoiceServiceIntegrationTests {
     @BeforeEach
     void setup() {
         repo.deleteAll();
+        repoCoupon.deleteAll();
+        repoCoupon.save(new com.invoice.api.entity.Coupon("SAVE10", 10.0));
 
         // Generate tokens
         customerTokenUser1 = generateToken("customer1", 1, List.of("User"));

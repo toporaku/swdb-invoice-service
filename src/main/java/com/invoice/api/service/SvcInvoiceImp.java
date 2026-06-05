@@ -1,6 +1,8 @@
 package com.invoice.api.service;
 
 import java.text.SimpleDateFormat;
+import com.invoice.api.entity.Coupon;
+import com.invoice.api.repository.RepoCoupon;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -37,6 +39,9 @@ public class SvcInvoiceImp implements SvcInvoice {
 	
 	@Autowired
     private RepoInvoice repo;
+
+	@Autowired
+	private RepoCoupon repoCoupon;
 	
 	@Autowired
 	private JwtDecoder jwtDecoder;
@@ -144,12 +149,13 @@ public class SvcInvoiceImp implements SvcInvoice {
 			// Calculate discount
 			double discount = 0.0;
 			if (checkout != null && checkout.getCouponCode() != null && !checkout.getCouponCode().trim().isEmpty()) {
-				String coupon = checkout.getCouponCode().trim();
-				if ("SAVE10".equalsIgnoreCase(coupon)) {
-					discount = subtotal * 0.10;
-				} else {
-					throw new ApiException(HttpStatus.BAD_REQUEST, "Código de descuento no es válido");
+				String couponCode = checkout.getCouponCode().trim();
+				Coupon coupon = repoCoupon.findByCodeIgnoreCase(couponCode)
+						.orElseThrow(() -> new ApiException(HttpStatus.BAD_REQUEST, "Código de descuento no es válido"));
+				if (coupon.getActive() == null || !coupon.getActive()) {
+					throw new ApiException(HttpStatus.BAD_REQUEST, "El cupón de descuento no está activo");
 				}
+				discount = subtotal * (coupon.getDiscountPercentage() / 100.0);
 			}
 			
 			double totalAmount = subtotal - discount;
