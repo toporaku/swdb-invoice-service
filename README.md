@@ -4,13 +4,13 @@ Este repositorio contiene el microservicio de **Servicio de Facturación (Invoic
 
 ---
 
-## 📝 Descripción
+## Descripción
 
 Microservicio orquestador central para la transacción de compra. Se encarga del flujo de checkout: valida el carrito del usuario, aplica cupones de descuento válidos, descuenta el stock de manera definitiva, vacía el carrito y emite la factura fiscal correspondiente.
 
 ---
 
-## 🛠️ Stack Tecnológico
+## Tech Stack
 
 *   **Lenguaje de Programación:** Java 17
 *   **Framework Principal:** Spring Boot 3
@@ -20,7 +20,7 @@ Microservicio orquestador central para la transacción de compra. Se encarga del
 
 ---
 
-## 🚀 Guía de Ejecución Independiente
+## Guía de Ejecución
 
 Si desea arrancar este microservicio por separado para depuración o pruebas locales, siga estas instrucciones:
 
@@ -37,12 +37,12 @@ mvn spring-boot:run
 
 ---
 
-## 📖 Documentación de Endpoints (Swagger / OpenAPI)
+## Documentación de Endpoints (Swagger / OpenAPI)
 
 Este microservicio cuenta con documentación de API interactiva autogenerada con OpenAPI. 
 
 Una vez que el servicio esté corriendo, puede explorar y probar los endpoints interactivos ingresando a la siguiente dirección en su navegador:
-👉 **[Swagger UI - Servicio de Facturación (Invoice Service)](http://localhost:8084/swagger-ui/index.html)**
+ **[Swagger UI - Servicio de Facturación (Invoice Service)](http://localhost:8084/swagger-ui/index.html)**
 
 *Nota: La ruta de metadatos OpenAPI cruda en formato JSON está disponible en: `http://localhost:8084/v3/api-docs`.*
 
